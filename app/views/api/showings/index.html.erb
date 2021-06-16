@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+
+ <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300&display=swap">
+ <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap">
+<%= stylesheet_link_tag "style.css" %>
+<style>
+			h1 {
+					font-family: 'Fugaz One';
+					font-size: 170px;
+			}
+</style>
+    </head>
+
+<h1>chikiTheaters</h1>
+
+<h2>today'sShowings:</h2>
+	<body>
+<br/>
+
+  <div>
+
+		<% @showings.each do |showing| %>	
+	 
+
+				<h3><%= showing.movie.title %></h3>
+				<p>showing: <%= showing.time.try(:strftime, '%l:%M%p')  %> </p>
+				<p>running time: <%= showing.movie.runtime %> min </p>
+				<p>theatre: <%= showing.theater_id %></p>	
+				<p><%= showing.seats %> seats left  </p>
+		<%if showing.seats > 0  %>
+	
+			 <%= button_to "get ticket", '/api/orders', action: :select_showing, method: :get, :class => "button_style"   %>
+			 
+				<br/>
+				
+			 <%else %>
+			 <p>SOLD OUT</p>
+""
+			
+	
+		<% end %>
+	<% end %>
+
+		</div>
+
+
+
+		
+    	
+	</body>
+
+</html>

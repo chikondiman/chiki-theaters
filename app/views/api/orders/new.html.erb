@@ -1,0 +1,62 @@
+
+   <head>
+   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300&display=swap">
+ <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap">
+
+<%= stylesheet_link_tag "style.css" %>
+
+<style>
+			h1 {
+					font-family: 'Fugaz One';
+					font-size: 48px;
+			}
+   
+</style>
+
+    </head><h1>chikiTheaters</h1>
+<div class="container">
+
+  <h3>order a ticket</h3>
+   
+<div class="order_form">
+    <%= form_tag "/api/orders", method: :post do %>
+
+
+ 
+    <div  class="form-group">
+      <span class="text-danger">  </span>
+      <%= label_tag :name, "name" %>
+      <%= text_field_tag :name, @order.name, :class => "form-control" %>   
+    </div>
+    <br/>
+    <div  class="form-group">
+      <span class="text-danger"> </span>
+      <%= label_tag :email, "eMail" %>
+      <%= text_field_tag :email, @order.email, :class => "form-control" %>   
+    </div>
+     <br/>
+    <div class="form-group">
+      <span class="text-danger">  </span>
+      <%= label_tag :cc_number, "creditCard#" %>
+      <%= text_field_tag :cc_number, @order.cc_number, :class => "form-control" %>
+    </div>
+     <br/>
+    <div  class="form-group">
+      <span class="text-danger">  </span>
+      <%= label_tag :cc_exp, "creditCardExp" %>
+      <%= text_field_tag :cc_exp, @order.cc_exp, :class => "form-control" %>   
+     </div>
+
+     <p class="order_form">tickets </p>
+    <div class="quantity buttons_added">
+	<input type="button" value="-" class="minus"><input type="number" step="1" min="1" max="" name="quantity" value="1" title="Qty" class="input-text qty text" size="4" pattern="" inputmode=""><input type="button" value="+" class="plus">
+</div>
+     
+     </div>
+     <br/>
+    <%= submit_tag 'ticket time', :class => "button_style"  %>
+
+  <% end %>
+
+
+  
